@@ -9,7 +9,7 @@ contexts:
   - Career
 timeEstimate: 60
 dateCreated: 2026-03-09T13:57:38.644+02:00
-dateModified: 2026-03-09T14:00:34.455+02:00
+dateModified: 2026-03-09T14:30:34.468+02:00
 reminders:
   - id: rem_1773057081404_5ckr10q7j
     type: relative
@@ -30,6 +30,7 @@ googleCalendarEventId: n6li7m8qbc71gqq5ah11cfpc9s
 timeEntries:
   - startTime: 2026-03-09T12:00:34.455Z
     description: Work session
+    endTime: 2026-03-09T12:30:34.468Z
 ---
 
 - [ ] Make a script that commit daily the obsidian files

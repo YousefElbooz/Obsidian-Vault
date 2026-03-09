@@ -37,3 +37,11 @@ tags:
 	- <span style="color:rgb(174, 200, 164)">Language Evaluation Criteria :</span>
 	  - [ <span style="color:rgb(255, 149, 0)">Readability</span> - <span style="color:rgb(255, 149, 0)">Writability </span> ] 
 	  - [ <span style="color:rgb(255, 149, 0)">Reliability </span> - <span style="color:rgb(255, 149, 0)">Cost</span>  ]
+- **Lab 2:**
+	- Scala:
+		- Data Types:
+```scala
+object ScalaDataTypes{
+	def
+}		
+```

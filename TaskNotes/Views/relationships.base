@@ -61,7 +61,7 @@ views:
       - recurrence
       - complete_instances
       - file.tasks
-    columnOrder: '{"note.status":["to-do","done","doing","archived"]}'
+    columnOrder: '{"note.status":["to-do","doing","done","archived"]}'
   - type: tasknotesTaskList
     name: Projects
     filters:

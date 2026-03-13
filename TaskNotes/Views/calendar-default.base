@@ -72,7 +72,7 @@ views:
       slotDuration: 00:30:00
     calendarView: timeGridWeek
     showTimeEntries: true
-    showRecurring: true
+    showRecurring: false
     showDue: true
     showScheduled: true
     showPropertyBasedEvents: true

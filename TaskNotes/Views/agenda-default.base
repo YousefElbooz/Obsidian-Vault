@@ -63,15 +63,13 @@ views:
     options:
       showPropertyBasedEvents: false
     calendarView: timeGridWeek
-    startDateProperty: file.file
     listDayCount: 7
-    showScheduled: false
+    showScheduled: true
     showDue: true
     showRecurring: true
     showTimeEntries: true
     showPropertyBasedEvents: true
     showGoogleCalendar_yoosefelbooz@gmail.com: true
-    endDateProperty: file.file
     showGoogleCalendar_en.eg#holiday@group.v.calendar.google.com: true
     showAllDaySlot: true
   - type: tasknotesCalendar

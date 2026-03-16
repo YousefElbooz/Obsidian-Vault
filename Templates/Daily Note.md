@@ -47,6 +47,7 @@ SORT
 ---
 ## 💻 Programming & Projects
 > [!code] Active Development & Tasks
+### 📝 Pending Tasks
 ```dataview
 TABLE 
     priority AS "Priority", 
@@ -54,13 +55,42 @@ TABLE
     link(contexts) AS "Context"
 FROM "TaskNotes"
 WHERE contains(contexts, "Programming")
-    AND status != "Completed"
+    AND status != "done"
     AND (striptime(due) = this.file.day OR striptime(scheduled) = this.file.day)
 SORT 
     (striptime(due) = this.file.day) DESC,
     priority ASC
 ```
-
+### 🚀 Active Project Tasks (All Dates)
+```dataview
+TABLE 
+    priority AS "Priority", 
+    status AS "Status", 
+    link(contexts) AS "Context",
+    due AS "Due",
+    scheduled AS "Scheduled"
+FROM "TaskNotes"
+WHERE (projects != null OR contains(contexts, "Project"))
+    AND status != "done"
+SORT 
+    due ASC,
+    scheduled ASC,
+    priority ASC
+```
+### Completed Tasks
+```dataview
+TABLE 
+    priority AS "Priority", 
+    status AS "Status", 
+    link(contexts) AS "Context"
+FROM "TaskNotes"
+WHERE contains(contexts, "Programming")
+    AND status = "done"
+    AND (striptime(due) = this.file.day OR striptime(scheduled) = this.file.day)
+SORT 
+    (striptime(due) = this.file.day) DESC,
+    priority ASC
+```
 ---
 ## 💤 Sleep Tracker
 
@@ -70,9 +100,14 @@ const gcal = this.app.plugins.plugins["google-calendar"]?.api;
 if (!gcal) {
     dv.paragraph("⚠️ **Google Calendar plugin not found.** Please ensure it is enabled.");
 } else {
+    // 1. Grab the date from the current file context
+    const fileDateText = dv.current().file.day ? dv.current().file.day.toISODate() : dv.current().file.name;
+    const referenceDate = moment(fileDateText);
+
+    // 2. Use .clone() to prevent mutating the original referenceDate object
     const events = await gcal.getEvents({
-        startDate: moment().startOf('week'),
-        endDate: moment().endOf('week')
+        startDate: referenceDate.clone().startOf('week'),
+        endDate: referenceDate.clone().endOf('week')
     });
 
     const sleepDataMap = {};
@@ -90,7 +125,7 @@ if (!gcal) {
     const sortedDates = Object.keys(sleepDataMap).sort().reverse();
 
     if (sortedDates.length === 0) {
-        dv.paragraph("🌙 *No sleep events found for the past 7 days.*");
+        dv.paragraph("🌙 *No sleep events found for the week of this file.*");
     } else {
         let totalHours = 0;
         let minGoal = 5;      
@@ -123,27 +158,68 @@ if (!gcal) {
             ]);
         });
 
-        const avg = (totalHours / sortedDates.length).toFixed(2);
+        // Calculate Average
+        const avg = parseFloat((totalHours / sortedDates.length).toFixed(2));
         
+        // --- NEW: Calculate Consistency / Routine Quality ---
+        let sumOfSquaredDifferences = 0;
+        sortedDates.forEach(date => {
+            let diff = sleepDataMap[date] - avg;
+            sumOfSquaredDifferences += (diff * diff);
+        });
+        
+        // Standard Deviation gives us the average variance in hours
+        const stdDev = Math.sqrt(sumOfSquaredDifferences / sortedDates.length);
+        
+        let qualityStatus = "";
+        let qualityColor = "";
+        let qualityMessage = "";
+
+        // Determine quality based on how much the sleep schedule fluctuates
+        if (stdDev <= 0.8) { // Less than ~48 mins variance from average
+            qualityStatus = "Excellent";
+            qualityColor = "#4caf50"; // Green
+            qualityMessage = "> [!success] **Routine Quality:** Excellent. Your sleep hours are highly consistent, which is great for maintaining deep focus during development and study sessions.";
+        } else if (stdDev <= 1.5) { // Up to 1.5 hours variance
+            qualityStatus = "Fair";
+            qualityColor = "#ffeb3b"; // Yellow
+            qualityMessage = "> [!warning] **Routine Quality:** Fair. Your sleep durations fluctuate a bit. Tightening up your bedtime could yield better energy levels.";
+        } else { // High variance
+            qualityStatus = "Poor";
+            qualityColor = "#f44336"; // Red
+            qualityMessage = "> [!danger] **Routine Quality:** Inconsistent. Your sleep hours vary wildly from day to day. Try locking in a stricter schedule to avoid " + 
+                             "burning out your cognitive load.";
+        }
+        // --------------------------------------------------
+
+        // UI Generation
         let cardContainer = dv.el("div", "", { attr: { style: "display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;" }});
+        
         const createCard = (label, value, color) => {
             let card = cardContainer.createEl("div", { attr: { style: `flex: 1; min-width: 100px; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; border-left: 4px solid ${color};` }});
             card.createEl("div", { text: label, attr: { style: "font-size: 0.85em; color: gray; text-transform: uppercase; letter-spacing: 0.5px;" }});
             card.createEl("div", { text: value, attr: { style: "font-size: 1.4em; font-weight: bold; margin-top: 5px;" }});
         }
 
+        // Output Cards (Now includes the new Quality Status)
         createCard("Avg Sleep", `${avg}h`, avg < minGoal ? "#f44336" : "#4caf50");
+        createCard("Consistency", qualityStatus, qualityColor);
         createCard("Oversleep Days", oversleepDays, "#2196f3");
         createCard("Total Hours", totalHours.toFixed(1), "#9c27b0");
 
 		dv.paragraph(`#### 🧠 Weekly Analysis`);
+        
+        // Output Duration Trend
         if (avg > oversleepLimit) {
-            dv.paragraph("> [!warning] **Trend:** You are consistently oversleeping. This might lead to grogginess (sleep inertia). Try to cap sessions at 8.5 hours.");
+            dv.paragraph("> [!warning] **Duration Trend:** You are consistently oversleeping. This might lead to grogginess (sleep inertia). Try to cap sessions at 8.5 hours.");
         } else if (avg < minGoal) {
-            dv.paragraph("> [!danger] **Trend:** You are below your 5-hour baseline. This will likely impact your coding performance and focus.");
+            dv.paragraph("> [!danger] **Duration Trend:** You are below your 5-hour baseline. This will likely impact your performance and focus.");
         } else {
-            dv.paragraph("> [!success] **Trend:** Your sleep is within your defined healthy range.");
+            dv.paragraph("> [!success] **Duration Trend:** Your sleep is within your defined healthy range.");
         }
+
+        // Output Consistency Quality
+        dv.paragraph(qualityMessage);
 
         dv.table(["Date", "Duration", "vs. 5h Base", "Visual"], tableData);
     }

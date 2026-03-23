@@ -2,7 +2,7 @@
 To-Do: Study Java SpringBoot
 status: to-do
 priority: high
-due: 2026-03-23
+due: 2026-03-30
 contexts:
   - Programming
   - Java
@@ -10,7 +10,7 @@ contexts:
 recurrence: DTSTART:20260315T082747Z;FREQ=DAILY
 recurrence_anchor: scheduled
 dateCreated: 2026-03-15T08:27:47.497+02:00
-dateModified: 2026-03-16T23:00:31.539+02:00
+dateModified: 2026-03-23T15:33:02.617+02:00
 reminders:
   - id: rem_1773555923689_nm06h7ikj
     type: relative

@@ -1,6 +1,6 @@
 ---
 To-Do: Front End Finalize V1
-status: done
+status: archived
 priority: high
 contexts:
   - Programming
@@ -9,7 +9,7 @@ projects:
   - "[[خطوة]]"
 timeEstimate: 360
 dateCreated: 2026-03-15T01:08:48.436+02:00
-dateModified: 2026-03-15T01:13:19.751+02:00
+dateModified: 2026-03-23T15:52:32.603+02:00
 reminders:
   - id: rem_1773529615701_88gzkmf5a
     type: relative
@@ -27,6 +27,7 @@ tags:
   - خطوة
   - AI_Tools
   - task
+  - archived
 timeEntries:
   - startTime: 2026-03-13T22:00:00.000Z
     endTime: 2026-03-14T01:00:00.000Z
@@ -37,7 +38,7 @@ timeEntries:
   - startTime: 2026-03-14T14:00:00.000Z
     endTime: 2026-03-14T15:30:00.000Z
     description: ""
-completedDate: 2026-03-15
+completedDate: 2026-03-23
 scheduled:
 ---
 

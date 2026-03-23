@@ -1,11 +1,11 @@
 ---
 To-Do: Initialize Project Idea And Website
-status: done
+status: archived
 priority: normal
 due: 2026-03-12
 timeEstimate: 240
 dateCreated: 2026-03-09T05:32:50.027+02:00
-dateModified: 2026-03-10T05:13:18.522+02:00
+dateModified: 2026-03-23T15:52:32.916+02:00
 reminders:
   - id: rem_1773026957644_v2tlh213y
     type: relative
@@ -19,6 +19,7 @@ reminders:
     offset: -PT1H
 tags:
   - task
+  - archived
 timeEntries:
   - startTime: 2026-03-09T14:30:00.000Z
     description: Work session
@@ -43,7 +44,7 @@ contexts:
   - Programming
 projects:
   - "[[خطوة]]"
-completedDate: 2026-03-10
+completedDate: 2026-03-23
 ---
 
 Creating the project idea and system design and the website design through learning AI development tools

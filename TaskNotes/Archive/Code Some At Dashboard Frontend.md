@@ -1,6 +1,6 @@
 ---
 To-Do: Code Some At Dashboard Frontend
-status: done
+status: archived
 priority: normal
 contexts:
   - Career
@@ -9,7 +9,7 @@ projects:
   - "[[خطوة]]"
 timeEstimate: 180
 dateCreated: 2026-03-11T03:30:14.830+02:00
-dateModified: 2026-03-12T04:42:13.960+02:00
+dateModified: 2026-03-23T15:52:32.338+02:00
 reminders:
   - id: rem_1773192433249_r5t0gt72d
     type: relative
@@ -25,8 +25,8 @@ tags:
   - programming
   - خطوة
   - task
+  - archived
 scheduled: 2026-03-11
-googleCalendarEventId: 8mspec0be9fm8n3aj2iveudgr4
 timeEntries:
   - startTime: 2026-03-11T01:32:35.135Z
     description: Work session
@@ -43,7 +43,7 @@ timeEntries:
   - startTime: 2026-03-11T04:30:00.000Z
     endTime: 2026-03-11T05:00:00.000Z
     description: ""
-completedDate: 2026-03-12
+completedDate: 2026-03-23
 ---
 
 - [x] Dashboard Design  [completion:: 2026-03-12]

@@ -1,6 +1,6 @@
 ---
 To-Do: Coding Some In Khatwa
-status: done
+status: archived
 priority: high
 due: 2026-03-12
 contexts:
@@ -10,7 +10,7 @@ projects:
   - "[[خطوة]]"
 timeEstimate: 180
 dateCreated: 2026-03-12T05:13:38.282+02:00
-dateModified: 2026-03-12T09:01:52.632+02:00
+dateModified: 2026-03-23T15:52:32.399+02:00
 reminders:
   - id: rem_1773285123031_um3ioclwb
     type: relative
@@ -26,7 +26,8 @@ tags:
   - خطوة
   - programming
   - task
-completedDate: 2026-03-12
+  - archived
+completedDate: 2026-03-23
 timeEntries:
   - startTime: 2026-03-12T03:00:00.000Z
     endTime: 2026-03-12T07:00:00.000Z

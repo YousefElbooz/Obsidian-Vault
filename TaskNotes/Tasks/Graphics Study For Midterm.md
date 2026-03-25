@@ -1,14 +1,14 @@
 ---
 To-Do: Graphics Study For Midterm
-status: doing
+status: to-do
 priority: high
-due: 2026-03-23
+due: 2026-03-25
 contexts:
   - College
   - Graphics
 timeEstimate: 660
 dateCreated: 2026-03-23T15:45:53.383+02:00
-dateModified: 2026-03-23T21:33:44.238+02:00
+dateModified: 2026-03-25T03:26:01.390+02:00
 reminders:
   - id: rem_1774273412091_g45e1eovd
     type: relative

@@ -9,7 +9,7 @@ contexts:
   - Graphics
 timeEstimate: 360
 dateCreated: 2026-03-19T02:23:50.575+02:00
-dateModified: 2026-03-23T23:58:47.209+02:00
+dateModified: 2026-03-24T17:17:56.098+02:00
 reminders:
   - id: rem_1773879689620_c0wdpmxhh
     type: relative
@@ -42,8 +42,12 @@ timeEntries:
   - startTime: 2026-03-23T21:08:47.203Z
     description: Work session
     endTime: 2026-03-23T21:58:47.209Z
+  - startTime: 2026-03-23T22:17:32.861Z
+    description: Work session
+    endTime: 2026-03-23T23:07:28.674Z
 projects:
   - "[[Graphics Study For Midterm]]"
+  - "[[Finish SWE Assignment Phase 1]]"
 ---
 
 - [x] Lab 1  [completion:: 2026-03-23]

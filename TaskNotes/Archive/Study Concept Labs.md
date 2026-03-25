@@ -1,17 +1,18 @@
 ---
-status: done
+status: archived
 priority: high
 due: 2026-03-10
 contexts:
   - College
   - Concept
 dateCreated: 2026-03-07T21:22:08.250+02:00
-dateModified: 2026-03-11T03:19:40.204+02:00
+dateModified: 2026-03-25T03:36:23.296+02:00
 tags:
   - task
   - scala
   - concepts
   - college
+  - archived
 timeEstimate: 90
 To-Do: Study Concept Labs
 timeEntries:
@@ -38,7 +39,7 @@ timeEntries:
     endTime: 2026-03-11T01:19:40.203Z
 icsEventId:
   - google-yoosefelbooz@gmail.com-4h38h7a1davnnntra7mc2bi0f6_20260311T070000Z
-completedDate: 2026-03-11
+completedDate: 2026-03-25
 ---
 
 All Notes Is In [[Concept]]

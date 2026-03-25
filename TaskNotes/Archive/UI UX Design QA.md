@@ -1,13 +1,13 @@
 ---
 To-Do: UI UX Design QA
-status: done
+status: archived
 priority: normal
 due: 2026-03-10
 contexts:
   - Programming
   - Career
 dateCreated: 2026-03-10T02:56:15.660+02:00
-dateModified: 2026-03-10T04:50:06.615+02:00
+dateModified: 2026-03-25T03:36:23.525+02:00
 reminders:
   - id: rem_1773104110127_29pl64r21
     type: relative
@@ -24,6 +24,7 @@ tags:
   - AI_Tools
   - خطوة
   - task
+  - archived
 timeEntries:
   - startTime: 2026-03-10T00:15:00.000Z
     endTime: 2026-03-10T01:00:00.000Z
@@ -31,7 +32,7 @@ timeEntries:
   - startTime: 2026-03-10T02:45:00.000Z
     endTime: 2026-03-10T03:15:00.000Z
     description: ""
-completedDate: 2026-03-10
+completedDate: 2026-03-25
 projects:
   - "[[خطوة]]"
 ---

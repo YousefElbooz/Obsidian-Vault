@@ -2,13 +2,13 @@
 To-Do: Study Software Engineering For Midterm
 status: doing
 priority: high
-due: 2026-03-25
+due: 2026-03-27
 contexts:
   - College
   - SWE
 timeEstimate: 420
 dateCreated: 2026-03-24T17:18:26.635+02:00
-dateModified: 2026-03-25T22:00:51.906+02:00
+dateModified: 2026-03-27T04:07:47.223+02:00
 reminders:
   - id: rem_1774365484689_32eha0xuv
     type: relative

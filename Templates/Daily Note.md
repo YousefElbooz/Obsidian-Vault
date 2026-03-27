@@ -9,7 +9,7 @@ dsa_topic: None
 ---
 
 
-# 📅 2026-03-25
+# 📅 {{date}}
 # 📓 Agenda 
 ```dataviewjs 
 // 1. Setup & Target Date
@@ -254,21 +254,45 @@ if (!gcal) {
     const fileDateText = dv.current().file.day ? dv.current().file.day.toISODate() : dv.current().file.name;
     const referenceDate = moment(fileDateText);
 
-    // 2. Use .clone() to prevent mutating the original referenceDate object
+    // 2. Fetch events
     const events = await gcal.getEvents({
         startDate: referenceDate.clone().startOf('week'),
         endDate: referenceDate.clone().endOf('week')
     });
 
     const sleepDataMap = {};
+    const dailySegments = {}; // Maps dates to their specific sleep blocks
+
     events.forEach(e => {
         if (e.summary && e.summary.toLowerCase().includes("sleep")) {
             let start = moment(e.start.dateTime || e.start.date);
             let end = moment(e.end.dateTime || e.end.date);
-            let duration = moment.duration(end.diff(start)).asHours();
-            let dateKey = start.format("YYYY-MM-DD");
+            let totalDuration = moment.duration(end.diff(start)).asHours();
             
-            sleepDataMap[dateKey] = (sleepDataMap[dateKey] || 0) + duration;
+            // For the daily total calculation, we assign the whole duration to the start date 
+            // (or you can split it, but keeping it on start date is standard for sleep tracking)
+            let dateKey = start.format("YYYY-MM-DD");
+            sleepDataMap[dateKey] = (sleepDataMap[dateKey] || 0) + totalDuration;
+
+            // --- Split events for the multi-row timeline ---
+            let startDateStr = start.format("YYYY-MM-DD");
+            let endDateStr = end.format("YYYY-MM-DD");
+            let startHourFloat = start.hours() + start.minutes() / 60;
+            
+            if (startDateStr === endDateStr) {
+                // Event starts and ends on the same day
+                if (!dailySegments[startDateStr]) dailySegments[startDateStr] = [];
+                dailySegments[startDateStr].push({ start: startHourFloat, duration: totalDuration });
+            } else {
+                // Event crosses midnight, split into two blocks
+                let durationBeforeMidnight = 24 - startHourFloat;
+                if (!dailySegments[startDateStr]) dailySegments[startDateStr] = [];
+                dailySegments[startDateStr].push({ start: startHourFloat, duration: durationBeforeMidnight });
+
+                let endHourFloat = end.hours() + end.minutes() / 60;
+                if (!dailySegments[endDateStr]) dailySegments[endDateStr] = [];
+                dailySegments[endDateStr].push({ start: 0, duration: endHourFloat });
+            }
         }
     });
 
@@ -278,22 +302,24 @@ if (!gcal) {
         dv.paragraph("🌙 *No sleep events found for the week of this file.*");
     } else {
         let totalHours = 0;
-        let minGoal = 5;      
-        let idealGoal = 8;    
-        let oversleepLimit = 6.5; 
+        let minGoal = 6;      
+        let dangerLow = 4;
+        let dangerHigh = 10;
+        let progressMax = 12; 
         let tableData = [];
         let oversleepDays = 0;
 
         sortedDates.forEach(date => {
             let duration = sleepDataMap[date];
             totalHours += duration;
-            if (duration > oversleepLimit) oversleepDays++;
+            if (duration > dangerHigh) oversleepDays++;
 
-            let percent = Math.min((duration / idealGoal) * 100, 100);
+            let percent = Math.min((duration / progressMax) * 100, 100);
             let barColor = "#4caf50"; 
-            if (duration < minGoal) barColor = "#f44336"; 
-            else if (duration > oversleepLimit) barColor = "#2196f3"; 
-            else if (duration < 6.5) barColor = "#ffeb3b"; 
+            
+            if (duration < dangerLow) barColor = "#f44336"; 
+            else if (duration > dangerHigh) barColor = "#ffeb3b"; 
+            else if (duration < minGoal) barColor = "#ff9800"; 
 
             let progressBar = `<div style="width:100px; background:rgba(255,255,255,0.1); border-radius:5px; height:8px; display:inline-block; vertical-align:middle;"><div style="width:${percent}%; background:${barColor}; height:100%; border-radius:5px;"></div></div>`;
 
@@ -304,74 +330,106 @@ if (!gcal) {
                 moment(date).format("ddd, MMM DD"), 
                 `**${duration.toFixed(2)}h**`, 
                 diffText,
-                dv.el("div", progressBar)
+                progressBar 
             ]);
         });
 
-        // Calculate Average
         const avg = parseFloat((totalHours / sortedDates.length).toFixed(2));
         
-        // --- NEW: Calculate Consistency / Routine Quality ---
         let sumOfSquaredDifferences = 0;
         sortedDates.forEach(date => {
             let diff = sleepDataMap[date] - avg;
             sumOfSquaredDifferences += (diff * diff);
         });
-        
-        // Standard Deviation gives us the average variance in hours
         const stdDev = Math.sqrt(sumOfSquaredDifferences / sortedDates.length);
         
-        let qualityStatus = "";
-        let qualityColor = "";
-        let qualityMessage = "";
-
-        // Determine quality based on how much the sleep schedule fluctuates
-        if (stdDev <= 0.8) { // Less than ~48 mins variance from average
-            qualityStatus = "Excellent";
-            qualityColor = "#4caf50"; // Green
+        let qualityStatus = ""; let qualityColor = ""; let qualityMessage = "";
+        if (stdDev <= 0.8) { 
+            qualityStatus = "Excellent"; qualityColor = "#4caf50"; 
             qualityMessage = "> [!success] **Routine Quality:** Excellent. Your sleep hours are highly consistent, which is great for maintaining deep focus during development and study sessions.";
-        } else if (stdDev <= 1.5) { // Up to 1.5 hours variance
-            qualityStatus = "Fair";
-            qualityColor = "#ffeb3b"; // Yellow
+        } else if (stdDev <= 1.5) { 
+            qualityStatus = "Fair"; qualityColor = "#ffeb3b"; 
             qualityMessage = "> [!warning] **Routine Quality:** Fair. Your sleep durations fluctuate a bit. Tightening up your bedtime could yield better energy levels.";
-        } else { // High variance
-            qualityStatus = "Poor";
-            qualityColor = "#f44336"; // Red
-            qualityMessage = "> [!danger] **Routine Quality:** Inconsistent. Your sleep hours vary wildly from day to day. Try locking in a stricter schedule to avoid " + 
-                             "burning out your cognitive load.";
+        } else { 
+            qualityStatus = "Poor"; qualityColor = "#f44336"; 
+            qualityMessage = "> [!danger] **Routine Quality:** Inconsistent. Your sleep hours vary wildly from day to day. Try locking in a stricter schedule to avoid burning out your cognitive load.";
         }
-        // --------------------------------------------------
 
-        // UI Generation
         let cardContainer = dv.el("div", "", { attr: { style: "display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;" }});
-        
         const createCard = (label, value, color) => {
             let card = cardContainer.createEl("div", { attr: { style: `flex: 1; min-width: 100px; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; border-left: 4px solid ${color};` }});
             card.createEl("div", { text: label, attr: { style: "font-size: 0.85em; color: gray; text-transform: uppercase; letter-spacing: 0.5px;" }});
             card.createEl("div", { text: value, attr: { style: "font-size: 1.4em; font-weight: bold; margin-top: 5px;" }});
         }
 
-        // Output Cards (Now includes the new Quality Status)
         createCard("Avg Sleep", `${avg}h`, avg < minGoal ? "#f44336" : "#4caf50");
         createCard("Consistency", qualityStatus, qualityColor);
-        createCard("Oversleep Days", oversleepDays, "#2196f3");
         createCard("Total Hours", totalHours.toFixed(1), "#9c27b0");
 
 		dv.paragraph(`#### 🧠 Weekly Analysis`);
         
-        // Output Duration Trend
-        if (avg > oversleepLimit) {
-            dv.paragraph("> [!warning] **Duration Trend:** You are consistently oversleeping. This might lead to grogginess (sleep inertia). Try to cap sessions at 8.5 hours.");
-        } else if (avg < minGoal) {
-            dv.paragraph("> [!danger] **Duration Trend:** You are below your 5-hour baseline. This will likely impact your performance and focus.");
-        } else {
-            dv.paragraph("> [!success] **Duration Trend:** Your sleep is within your defined healthy range.");
-        }
+        if (avg > dangerHigh) dv.paragraph(`> [!warning] **Duration Trend:** You are consistently oversleeping (averaging >${dangerHigh}h). This might lead to sleep inertia. Try capping sessions closer to 8 hours.`);
+        else if (avg < dangerLow) dv.paragraph(`> [!danger] **Duration Trend:** You are averaging below ${dangerLow} hours. This severe lack of sleep will drastically impact your performance and focus.`);
+        else if (avg < minGoal) dv.paragraph(`> [!warning] **Duration Trend:** You are below your ${minGoal}-hour baseline. Prioritize getting slightly more rest to optimize cognitive function.`);
+        else dv.paragraph("> [!success] **Duration Trend:** Your sleep duration is within your defined healthy range.");
 
-        // Output Consistency Quality
         dv.paragraph(qualityMessage);
+        dv.table(["Date", "Duration", "vs. 6h Base", "Visual"], tableData);
 
-        dv.table(["Date", "Duration", "vs. 5h Base", "Visual"], tableData);
+        // --- NEW: Multi-Row Timeline ---
+        let timelineHTML = `
+        <div style="margin-top: 30px; margin-bottom: 20px;">
+            <div style="font-weight: bold; margin-bottom: 12px;">📅 Daily Sleep Windows</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+        `;
+
+        // Sort dates chronologically (oldest to newest) for the timeline view
+        const chronologicalDates = [...sortedDates].reverse();
+
+        chronologicalDates.forEach(date => {
+            let dayLabel = moment(date).format("ddd DD");
+            let segments = dailySegments[date] || [];
+
+            timelineHTML += `
+                <div style="display: flex; align-items: center; width: 100%;">
+                    <div style="width: 55px; font-size: 0.8em; color: var(--text-muted); text-align: right; padding-right: 10px; white-space: nowrap;">
+                        ${dayLabel}
+                    </div>
+                    <div style="flex-grow: 1; height: 20px; background: rgba(255,255,255,0.05); position: relative; border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            `;
+
+            segments.forEach(seg => {
+                let leftPct = (seg.start / 24) * 100;
+                let widthPct = (seg.duration / 24) * 100;
+                
+                // Calculate tooltip times
+                let startMoment = moment().startOf('day').add(seg.start, 'hours');
+                let endMoment = moment(startMoment).add(seg.duration, 'hours');
+                let tooltip = `${startMoment.format('HH:mm')} - ${endMoment.format('HH:mm')} (${seg.duration.toFixed(1)}h)`;
+
+                timelineHTML += `<div title="${tooltip}" style="position: absolute; left: ${leftPct}%; width: ${widthPct}%; height: 100%; background: #4caf50; border-radius: 2px; cursor: help; opacity: 0.85;"></div>`;
+            });
+
+            timelineHTML += `
+                    </div>
+                </div>
+            `;
+        });
+
+        timelineHTML += `
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.75em; color: var(--text-muted); margin-top: 8px; margin-left: 55px; font-family: monospace;">
+                <span>00:00</span>
+                <span>06:00</span>
+                <span>12:00</span>
+                <span>18:00</span>
+                <span>24:00</span>
+            </div>
+        </div>
+        `;
+
+        let timelineWrapper = dv.el("div", "");
+        timelineWrapper.innerHTML = timelineHTML.trim();
     }
 }
 ```

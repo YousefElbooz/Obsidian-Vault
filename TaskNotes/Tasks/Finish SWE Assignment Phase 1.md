@@ -2,13 +2,13 @@
 To-Do: Finish SWE Assignment Phase 1
 status: to-do
 priority: high
-due: 2026-03-25
+due: 2026-03-28
 contexts:
   - College
   - SWE
 timeEstimate: 120
 dateCreated: 2026-03-24T17:14:32.561+02:00
-dateModified: 2026-03-25T03:25:57.632+02:00
+dateModified: 2026-03-27T04:07:36.018+02:00
 reminders:
   - id: rem_1774364856730_9yeogslig
     type: relative

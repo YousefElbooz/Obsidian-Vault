@@ -2,13 +2,13 @@
 To-Do: Study HPC For Midterm
 status: to-do
 priority: high
-due: 2026-03-26
+due: 2026-03-27
 contexts:
   - College
   - HPC
 timeEstimate: 600
 dateCreated: 2026-03-25T20:56:12.000+02:00
-dateModified: 2026-03-25T20:56:12.000+02:00
+dateModified: 2026-03-27T11:44:06.278+02:00
 reminders:
   - id: rem_1774464886957_l0an1fwb1
     type: relative
@@ -24,11 +24,23 @@ tags:
   - college
   - hpc
   - task
+timeEntries:
+  - startTime: 2026-03-27T01:00:00.000Z
+    endTime: 2026-03-27T02:00:00.000Z
+    description: ""
+  - startTime: 2026-03-27T03:03:09.128Z
+    description: Work session
+    endTime: 2026-03-27T03:22:26.053Z
+  - startTime: 2026-03-27T06:00:46.116Z
+    description: Work session
+    endTime: 2026-03-27T06:50:46.121Z
+  - startTime: 2026-03-27T07:05:55.263Z
+    description: Work session
+    endTime: 2026-03-27T09:44:06.278Z
 ---
 
-- [ ]  Lecture 1
-- [ ]  Lecture 2
+- [x] Lecture 1  [completion:: 2026-03-27]
+- [x] Lecture 2  [completion:: 2026-03-27]
 - [ ]  Lecture 3
 - [ ]  Lecture 4
 - [ ]  Lecture 5
-- [ ]  Lecture 6

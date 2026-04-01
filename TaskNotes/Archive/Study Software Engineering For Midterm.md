@@ -1,6 +1,6 @@
 ---
 To-Do: Study Software Engineering For Midterm
-status: doing
+status: archived
 priority: high
 due: 2026-03-27
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - SWE
 timeEstimate: 420
 dateCreated: 2026-03-24T17:18:26.635+02:00
-dateModified: 2026-03-27T04:07:47.223+02:00
+dateModified: 2026-03-31T23:55:41.869+02:00
 reminders:
   - id: rem_1774365484689_32eha0xuv
     type: relative
@@ -24,6 +24,7 @@ tags:
   - college
   - swe
   - task
+  - archived
 timeEntries:
   - startTime: 2026-03-24T15:30:31.744Z
     description: Work session
@@ -46,6 +47,25 @@ timeEntries:
   - startTime: 2026-03-25T19:30:05.021Z
     description: Work session
     endTime: 2026-03-25T20:00:51.906Z
+  - startTime: 2026-03-30T23:18:06.560Z
+    description: Work session
+    endTime: 2026-03-31T00:08:06.569Z
+  - startTime: 2026-03-31T00:16:50.695Z
+    description: Work session
+    endTime: 2026-03-31T00:17:04.210Z
+  - startTime: 2026-03-31T02:45:00.000Z
+    endTime: 2026-03-31T03:45:00.000Z
+    description: ""
+  - startTime: 2026-03-31T00:30:00.000Z
+    endTime: 2026-03-31T01:30:00.000Z
+    description: ""
+  - startTime: 2026-03-31T07:15:00.000Z
+    endTime: 2026-03-31T07:45:00.000Z
+    description: ""
+  - startTime: 2026-03-31T01:45:00.000Z
+    endTime: 2026-03-31T02:15:00.000Z
+    description: ""
+completedDate: 2026-03-31
 ---
 
 - [x] Lecture 1  [completion:: 2026-03-24]

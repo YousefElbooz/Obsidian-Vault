@@ -1,6 +1,6 @@
 ---
 To-Do: NLP Study
-status: to-do
+status: postponed
 priority: high
 due: 2026-03-27
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - NLP
 timeEstimate: 360
 dateCreated: 2026-03-27T05:02:05.889+02:00
-dateModified: 2026-03-27T05:02:05.889+02:00
+dateModified: 2026-03-30T02:17:27.589+02:00
 reminders:
   - id: rem_1774580424987_wwulbz84j
     type: relative

@@ -3,14 +3,14 @@ To-Do: Finish the Java Spring Boot Crash Course
 status: to-do
 priority: high
 due: 2026-04-03
-scheduled: 2026-03-30
+scheduled: 2026-04-03
 contexts:
   - Programming
   - Java
   - Backend
 timeEstimate: 420
 dateCreated: 2026-03-16T04:37:53.074+02:00
-dateModified: 2026-03-23T15:46:50.877+02:00
+dateModified: 2026-03-30T02:18:45.648+02:00
 reminders:
   - id: rem_1773628141341_lr382x1u0
     type: relative

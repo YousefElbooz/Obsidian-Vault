@@ -1,6 +1,6 @@
 ---
 To-Do: Study SWE Labs high
-status: to-do
+status: postponed
 priority: high
 due: 2026-03-25
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - SWE
 timeEstimate: 300
 dateCreated: 2026-03-24T17:17:10.357+02:00
-dateModified: 2026-03-24T17:17:10.357+02:00
+dateModified: 2026-03-30T02:17:55.202+02:00
 reminders:
   - id: rem_1774365275119_hnqbu1mtu
     type: relative

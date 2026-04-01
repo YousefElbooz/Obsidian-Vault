@@ -1,6 +1,6 @@
 ---
 To-Do: Finish SWE Assignment Phase 1
-status: to-do
+status: postponed
 priority: high
 due: 2026-03-28
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - SWE
 timeEstimate: 120
 dateCreated: 2026-03-24T17:14:32.561+02:00
-dateModified: 2026-03-27T04:07:36.018+02:00
+dateModified: 2026-03-30T02:17:53.880+02:00
 reminders:
   - id: rem_1774364856730_9yeogslig
     type: relative

@@ -1,14 +1,14 @@
 ---
 To-Do: Study HPC For Midterm
-status: to-do
+status: postponed
 priority: high
-due: 2026-03-27
+due: 2026-04-01
 contexts:
   - College
   - HPC
 timeEstimate: 600
 dateCreated: 2026-03-25T20:56:12.000+02:00
-dateModified: 2026-03-27T11:44:06.278+02:00
+dateModified: 2026-04-01T03:59:41.612+02:00
 reminders:
   - id: rem_1774464886957_l0an1fwb1
     type: relative

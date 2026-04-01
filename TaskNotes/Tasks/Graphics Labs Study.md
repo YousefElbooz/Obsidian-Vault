@@ -1,6 +1,6 @@
 ---
 To-Do: Graphics Labs Study
-status: to-do
+status: postponed
 priority: normal
 due: 2026-03-28
 scheduled: 2026-03-26
@@ -9,7 +9,7 @@ contexts:
   - Graphics
 timeEstimate: 360
 dateCreated: 2026-03-19T02:23:50.575+02:00
-dateModified: 2026-03-24T17:17:56.098+02:00
+dateModified: 2026-03-30T02:18:11.306+02:00
 reminders:
   - id: rem_1773879689620_c0wdpmxhh
     type: relative

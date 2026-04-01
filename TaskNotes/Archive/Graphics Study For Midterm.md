@@ -1,6 +1,6 @@
 ---
 To-Do: Graphics Study For Midterm
-status: to-do
+status: archived
 priority: high
 due: 2026-03-28
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - Graphics
 timeEstimate: 660
 dateCreated: 2026-03-23T15:45:53.383+02:00
-dateModified: 2026-03-27T04:08:03.826+02:00
+dateModified: 2026-03-31T01:24:13.902+02:00
 reminders:
   - id: rem_1774273412091_g45e1eovd
     type: relative
@@ -24,6 +24,7 @@ tags:
   - college
   - graphics
   - task
+  - archived
 timeEntries:
   - startTime: 2026-03-23T15:16:00.000Z
     description: Work session
@@ -37,6 +38,16 @@ timeEntries:
   - startTime: 2026-03-23T19:00:29.899Z
     description: Work session
     endTime: 2026-03-23T19:33:44.238Z
+  - startTime: 2026-03-30T01:17:39.346Z
+    description: Work session
+    endTime: 2026-03-30T02:07:39.355Z
+  - startTime: 2026-03-30T02:17:06.717Z
+    description: Work session
+    endTime: 2026-03-30T03:07:06.729Z
+  - startTime: 2026-03-30T03:30:00.000Z
+    endTime: 2026-03-30T04:00:00.000Z
+    description: ""
+completedDate: 2026-03-31
 ---
 - [x] Lecture 1  [completion:: 2026-03-23]
 - [x] Lecture 2  [completion:: 2026-03-23]

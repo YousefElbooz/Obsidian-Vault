@@ -1,6 +1,6 @@
 ---
 To-Do: Study HPC For Midterm
-status: postponed
+status: done
 priority: high
 due: 2026-04-01
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - HPC
 timeEstimate: 600
 dateCreated: 2026-03-25T20:56:12.000+02:00
-dateModified: 2026-04-01T03:59:41.612+02:00
+dateModified: 2026-04-03T04:51:54.242+02:00
 reminders:
   - id: rem_1774464886957_l0an1fwb1
     type: relative
@@ -37,10 +37,11 @@ timeEntries:
   - startTime: 2026-03-27T07:05:55.263Z
     description: Work session
     endTime: 2026-03-27T09:44:06.278Z
+completedDate: 2026-04-03
 ---
 
 - [x] Lecture 1  [completion:: 2026-03-27]
 - [x] Lecture 2  [completion:: 2026-03-27]
-- [ ]  Lecture 3
-- [ ]  Lecture 4
-- [ ]  Lecture 5
+- [x] Lecture 3  [completion:: 2026-04-03]
+- [x] Lecture 4  [completion:: 2026-04-03]
+- [x] Lecture 5  [completion:: 2026-04-03]

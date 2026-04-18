@@ -7,10 +7,9 @@ scheduled: 2026-03-15T17:30
 contexts:
   - Family
 timeEstimate: 90
-recurrence: DTSTART:20260311T173000Z;FREQ=DAILY
 recurrence_anchor: scheduled
 dateCreated: 2026-03-11T01:14:06.239+02:00
-dateModified: 2026-03-15T01:18:28.944+02:00
+dateModified: 2026-04-11T08:38:33.770+02:00
 reminders:
   - id: rem_1773184336796_5xorqdy61
     type: relative

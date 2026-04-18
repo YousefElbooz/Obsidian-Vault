@@ -9,7 +9,7 @@ contexts:
   - Graphics
 timeEstimate: 360
 dateCreated: 2026-03-19T02:23:50.575+02:00
-dateModified: 2026-03-30T02:18:11.306+02:00
+dateModified: 2026-04-15T12:58:54.896+02:00
 reminders:
   - id: rem_1773879689620_c0wdpmxhh
     type: relative
@@ -25,7 +25,7 @@ tags:
   - college
   - graphics
   - task
-googleCalendarEventId: ofnvnieurrs8siaq61dm3fpkvc
+  - archived
 timeEntries:
   - startTime: 2026-03-19T00:27:50.876Z
     description: Work session

@@ -1,6 +1,6 @@
 ---
 To-Do: Finish the Java Spring Boot Crash Course
-status: to-do
+status: archived
 priority: high
 due: 2026-04-03
 scheduled: 2026-04-03
@@ -10,7 +10,7 @@ contexts:
   - Backend
 timeEstimate: 420
 dateCreated: 2026-03-16T04:37:53.074+02:00
-dateModified: 2026-03-30T02:18:45.648+02:00
+dateModified: 2026-04-11T08:29:56.023+02:00
 reminders:
   - id: rem_1773628141341_lr382x1u0
     type: relative
@@ -27,7 +27,7 @@ tags:
   - programming
   - career
   - task
-googleCalendarEventId: jo597ti45d8ecgkdj0kf0nedm8
+  - archived
 timeEntries:
   - startTime: 2026-03-16T02:45:00.000Z
     description: Work session
@@ -38,6 +38,7 @@ timeEntries:
   - startTime: 2026-03-16T04:46:59.276Z
     description: Work session
     endTime: 2026-03-16T05:11:59.294Z
+completedDate: 2026-04-11
 ---
 
 - [x] Quickstart:  [completion:: 2026-03-16]

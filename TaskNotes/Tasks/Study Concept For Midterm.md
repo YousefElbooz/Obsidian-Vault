@@ -8,7 +8,7 @@ contexts:
   - Concept
 timeEstimate: 300
 dateCreated: 2026-04-01T03:58:49.122+02:00
-dateModified: 2026-04-01T23:50:46.916+02:00
+dateModified: 2026-04-03T04:52:07.601+02:00
 reminders:
   - id: rem_1775008665280_kelp91lw3
     type: relative
@@ -41,9 +41,9 @@ timeEntries:
 completedDate: 2026-04-01
 ---
 
-- [ ] Lecture 1
-- [ ] Lecture 2
-- [ ] Lecture 3
-- [ ] Lecture 4
-- [ ] Lecture 5
-- [ ] Lecture 6
+- [x] Lecture 1  [completion:: 2026-04-03]
+- [x] Lecture 2  [completion:: 2026-04-03]
+- [x] Lecture 3  [completion:: 2026-04-03]
+- [x] Lecture 4  [completion:: 2026-04-03]
+- [x] Lecture 5  [completion:: 2026-04-03]
+- [x] Lecture 6  [completion:: 2026-04-03]

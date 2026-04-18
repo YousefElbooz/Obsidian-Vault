@@ -1,0 +1,89 @@
+# 1.Database Requirments:
+- User :
+	- Id
+	- First Name
+	- Last Name
+	- Personal Email
+	- Password
+	- Phone
+	- SSN
+- Dentist_Profile :
+	- Id
+	- User id
+	- Dentist Type
+	- Career Email
+	- Main Specialization
+	- Secondary Specialization
+- Profile Academic :
+	- Dentist Profile Id
+	- Academic Rank
+	- Teaching Field
+	- Research Field
+	- Supervises Students
+	- Courses Taught
+	- Approximate Student Count
+- Profile Clincal :
+	- Dentist Profile Id
+	- Clinc Name
+	- Work Type
+- Profile Student :
+	- Dentist Profile Id
+	- Current Study Year
+- Education:
+	- id Pk why??
+	- Dentist Profile Id
+	- University Name
+	- College Name
+	- Study Type
+	- Degree Level
+	- Graduation Year
+- Professional Experience:
+	- id pk why ??
+	- Dentist Profile Id
+	- Title
+	- Department Optional
+	- Place Type 
+	- Location
+	- Start Date
+	- End Date
+	- Description
+	- Years Of Experience 
+- Verification Document:
+	- id
+	- Dentist Profile Id
+	- Document Type
+	- License Number
+	- Issuing Authority
+	- File URL
+- Case:
+	- Id
+	- Owner Profile Id -->  Dentist Profile Id
+	- Category
+	- Procedure
+	- Date
+	- Duration
+	- Title
+	- Overview
+	- Clinical Summary
+	- Clinical Outcome
+	- Techniques And Methods
+	- Created At
+- Case Assets:
+	- Id
+	- Case Id
+	- Asset Category
+	- Media URL
+	- Description
+	- Display Order optional->Xray
+- Treatment Phase
+	- Id
+	- Case Id
+	- Phase Number
+	- Title 
+	- Description 
+	- Photo URL
+- Case Collaborator:
+	- Case Id
+	- Collaborator Profile Id -->  Dentist Profile Id
+	- Role
+	- Statue

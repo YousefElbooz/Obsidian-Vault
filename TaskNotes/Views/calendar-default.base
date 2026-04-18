@@ -72,7 +72,7 @@ views:
       slotDuration: 00:30:00
     calendarView: timeGridWeek
     showTimeEntries: true
-    showRecurring: false
+    showRecurring: true
     showDue: true
     showScheduled: true
     showPropertyBasedEvents: true
@@ -89,3 +89,6 @@ views:
     dayMaxEvents: 2
     eventMaxStack: 4
     scrollTime: 12:00:00
+    customDayCount: 5
+    firstDay: "0"
+    showGoogleCalendar_yoosefelbooz@gmail.com: true

@@ -1,6 +1,6 @@
 ---
 To-Do: Study Software Engineering For Midterm
-status: archived
+status: done
 priority: high
 due: 2026-03-27
 contexts:
@@ -8,7 +8,7 @@ contexts:
   - SWE
 timeEstimate: 420
 dateCreated: 2026-03-24T17:18:26.635+02:00
-dateModified: 2026-03-31T23:55:41.869+02:00
+dateModified: 2026-04-03T04:52:37.395+02:00
 reminders:
   - id: rem_1774365484689_32eha0xuv
     type: relative
@@ -65,12 +65,12 @@ timeEntries:
   - startTime: 2026-03-31T01:45:00.000Z
     endTime: 2026-03-31T02:15:00.000Z
     description: ""
-completedDate: 2026-03-31
+completedDate: 2026-04-03
 ---
 
 - [x] Lecture 1  [completion:: 2026-03-24]
 - [x] Lecture 2  [completion:: 2026-03-24]
 - [x] Lecture 3  [completion:: 2026-03-25]
-- [ ] Lecture 4 
-- [ ] Lecture 5 
-- [ ] Lecture 6
+- [x] Lecture 4  [completion:: 2026-04-03]
+- [x] Lecture 5  [completion:: 2026-04-03]
+- [x] Lecture 6  [completion:: 2026-04-03]
